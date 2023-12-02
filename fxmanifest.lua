@@ -5,7 +5,7 @@ use_fxv2_oal 'yes'
 games        { 'rdr3', 'gta5' }
 
 -- Resource Information --
-version      '1.0.0'
+version '1.0.0'
 name         'mrlutin_demo'
 author       'MrLutin'
 repository   "https://github.com/MrLutin/mrlutin_demo"
