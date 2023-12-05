@@ -1,33 +1,21 @@
-local Target = exports[Config.Target]
+-- Create all nightclub
+AddEventHandler('Mrlutin:OnPlayerLoaded', function(playerData)
+    Mrlutin.log('debug', playerData)
+end)
 
--- Demo option ( NOT FOR USE )
-local targetOption = {{
-  label = 'Test notification',
-  icon = 'fas fa-phone',
-  action = function(data)
-      return Mrlutin.notify({
-          id = 'demo',
-          type = "success",
-          sound = "demo",
-          title = 'Demo Notification',
-          description = "Demo notification trigged with the command!",
-          duration = 10000
-      })
-  end
-}}
+-- Create Zone for current job only
+AddEventHandler('Mrlutin:OnJobUpdate', function(job)
+    Mrlutin.log('debug', job)
+end)
 
--- After creation of the ped this event will be trigged
-RegisterNetEvent('demo:peds', function(pedData)
-    -- if you want to bind to the created entity
-    if pedData.entity and Config.Target == "qb-target" then
-        Target:AddTargetEntity( pedData.entity , {
-            options = targetOption,
-            distance = 1.0
-        })
-    end
+-- Create Zone for current job only
+AddEventHandler('Mrlutin:OnGangUpdate', function(gang)
+    Mrlutin.log('debug', gang)
+end)
 
-    -- if you want to bind to the created netId
-    if pedData.netId and Config.Target == "ox_target" then
-        Target:addEntity(pedData.netId, targetOption)
+-- Remove all zone created by the resource
+AddEventHandler('onResourceStop', function(resource)
+    if resource == GetCurrentResourceName() then
+        Mrlutin.log('warn', sting.format('%s is now stopped!', GetCurrentResourceName() ))
     end
 end)

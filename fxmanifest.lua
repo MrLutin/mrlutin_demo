@@ -18,11 +18,26 @@ dependencies {
     'mrlutin_lib',
 }
 
-shared_scripts {
-    '@mrlutin_lib/imports.lua',
-    'config.lua',
+files {
+    'locales/*.json',
 }
 
-client_script 'client/main.lua'
+shared_scripts {
+    '@mrlutin_lib/imports.lua',
+    'locales/*.json',
+    'config.lua',
+    'init.lua',
+}
 
-server_script 'server/main.lua'
+client_scripts {
+    'client/*.lua',
+}
+
+server_scripts {
+    'server/*.lua'
+}
+
+escrow_ignore {
+    'config.lua',
+    'locales/*.json',
+}
