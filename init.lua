@@ -14,12 +14,13 @@ Mrlutin.locale()
 if IsDuplicityVersion() then
 
     -- check if dependencies for some other resources
-    local mrSuccess, msg = Mrlutin.checkDependency('mrlutin_lib', '1.0.0')
-    local oxSuccess, msg = Mrlutin.checkDependency('ox_lib', '3.12.0')
+    local mrSuccess, mrMsg = Mrlutin.checkDependency('mrlutin_lib', '1.0.0')
+    local oxSuccess, oxMsg = Mrlutin.checkDependency('ox_lib', '3.12.0')
 
     -- if dependencies not found
     if not mrSuccess or not oxSuccess then
         StopResource( GetCurrentResourceName() )
+        print(mrMsg or oxMsg)
     end
 
 end
